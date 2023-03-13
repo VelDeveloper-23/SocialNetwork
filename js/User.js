@@ -31,11 +31,11 @@ class User {
       });
   }
 
-  // login() {
-  //   fetch(this.api_url + "/users")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }
+  login() {
+    fetch(this.api_url + "/users")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 }

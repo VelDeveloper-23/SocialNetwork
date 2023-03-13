@@ -1,9 +1,9 @@
-let session = new Session();
-session = session.getSession();
+// let session = new Session();
+// session = session.getSession();
 
-if (session !== "") {
-  window.location.href = "hexa.html";
-}
+// if (session !== "") {
+//   window.location.href = "hexa.html";
+// }
 
 document.querySelector("#registracija").addEventListener("click", () => {
   document.querySelector(".custom-modal").style.display = "block";
@@ -58,14 +58,14 @@ document.querySelector("#registrationForm").addEventListener("submit", (e) => {
   }
 });
 
-// document.querySelector("#loginForm").addEventListener("submit", (e) => {
-//   e.preventDefault();
+document.querySelector("#loginForm").addEventListener("submit", (e) => {
+  e.preventDefault();
 
-//   let email = document.querySelector("#login_email").value;
-//   let password = document.querySelector("#login_lozinka").value;
+  let email = document.querySelector("#login_email").value;
+  let password = document.querySelector("#login_lozinka").value;
 
-//   let user = new User();
-//   user.email = email;
-//   user.password = password;
-//   user.login();
-// });
+  let user = new User();
+  user.email = email;
+  user.password = password;
+  user.login();
+});
