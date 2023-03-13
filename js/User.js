@@ -23,7 +23,19 @@ class User {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Korisnik je kreiran");
+        let session = new Session();
+        session.user_id = data.id;
+        session.startSession();
+
+        window.location.href = "hexa.html";
       });
   }
+
+  // login() {
+  //   fetch(this.api_url + "/users")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }
 }
