@@ -1,9 +1,9 @@
-// let session = new Session();
-// session = session.getSession();
+let session = new Session();
+session = session.getSession();
 
-// if (session !== "") {
-//   window.location.href = "hexa.html";
-// }
+if (session !== "") {
+  window.location.href = "hexa.html";
+}
 
 document.querySelector("#registracija").addEventListener("click", () => {
   document.querySelector(".custom-modal").style.display = "block";
