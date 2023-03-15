@@ -42,8 +42,44 @@
       </div>
     </div>
 
+    <div class="custom-modal">
+      <button id="closeModal">X</button>
+
+      <form id="editForm">
+        <h2>Izmeni profil</h2>
+        <div>
+          <label for="korisnicko_ime">Korisnicko ime: </label>
+          <input
+            id="korisnicko_ime"
+            type="text"
+            name="korisnicko_ime"
+            placeholder="niko.nikolic1"
+          />
+        </div>
+
+        <div>
+          <label for="edit_email">Email adresa:</label>
+          <input
+            id="edit_email"
+            type="text"
+            name="register_email"
+            placeholder="niko.nikolic@gmail.com"
+          />
+        </div>
+     
+
+        <div>
+          <button>Izmeni</button>
+        </div>
+      </form>
+
+      <hr>
+
+      <button id="deleteProfile">OBRISI PROFIL</button>
+
     <script src="js/Session.js"></script>
     <script src="js/User.js"></script>
+    <script src="js/Post.js"></script>
     <script src="js/hexa.js"></script>
   </body>
 </html>
