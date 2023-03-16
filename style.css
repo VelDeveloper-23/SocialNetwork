@@ -152,3 +152,32 @@ form div button {
   color: red;
   padding: 5px 15px;
 }
+
+#allPostsWrapper .single-post {
+  background-color: #eaeaea;
+  padding: 15px;
+  margin-top: 15px;
+  color: #000;
+}
+
+#allPostsWrapper .single-post .post-content {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+#allPostsWrapper .single-post .post-comments form {
+  height: 30px;
+  margin-top: 15px;
+}
+
+#allPostsWrapper .single-post .post-comments form input {
+  width: 85%;
+  padding: 0 10px;
+}
+
+#allPostsWrapper .single-post .post-comments form button {
+  width: 15%;
+  background-color: gray;
+}
