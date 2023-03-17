@@ -66,6 +66,8 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
     let current_user = new User();
     current_user = await current_user.get(session_id);
 
+    let html = document.querySelector("#allPostsWrapper").innerHTML;
+
     let delete_post_html = "";
 
     if (session_id === post.user_id) {
@@ -73,9 +75,8 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
         '<button class="remove-btn" onclick="removeMyPosts(this)">Remove</button>';
     }
 
-    document.querySelector(
-      "#allPostsWrapper"
-    ).innerHTML = `<div class='single-post' data-post_id='${post.id}'>
+    document.querySelector("#allPostsWrapper").innerHTML =
+      `<div class='single-post' data-post_id='${post.id}'>
           <div class='post-content'>${post.content}</div>
 
           <div class="post-actions">
@@ -100,7 +101,7 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
 
 
            </div>       
-          </div>`;
+          </div>` + html;
   }
 
   createPost();
@@ -133,7 +134,7 @@ async function getAllPosts() {
         <p><b>Autor:</b> ${user.username}</p>
         <div>
         <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span> Likes</button>
-        <button class="coment-btn" onclick="commentPost(this)">Comments</button>
+        <button class="comment-btn" onclick="commentPost(this)">Comments</button>
         ${delete_post_html}
 
         </div>
@@ -159,10 +160,42 @@ async function getAllPosts() {
 
 getAllPosts();
 
-const commentPostSubmit = (event) => {};
+const commentPostSubmit = (e) => {
+  e.preventDefault();
 
-const removeMyPosts = (el) => {};
+  let btn = e.target;
+  btn.setAttribute("disabled", "true");
 
-const likePost = (el) => {};
+  let main_post_el = btn.closest(".single-post");
+  let post_id = main_post_el.getAttribute("data-post_id");
 
-const commentPost = (el) => {};
+  let comment_value = main_post_el.querySelector("input").value;
+
+  main_post_el.querySelector("input").value = "";
+
+  main_post_el.querySelector(
+    ".post-comments"
+  ).innerHTML += `<div class ="single-comment">${comment_value}</div>`;
+};
+
+const removeMyPosts = (btn) => {
+  let post_id = btn.closest(".single-post").getAttribute("data-post_id");
+
+  btn.closest(".single-post").remove();
+};
+
+const likePost = (btn) => {
+  let main_post_el = btn.closest(".single-post");
+  let post_id = btn.closest(".single-post").getAttribute("data-post_id");
+  let number_of_likes = parseInt(btn.querySelector("span").innerText);
+
+  btn.querySelector("span").innerText = number_of_likes + 1;
+  btn.setAttribute("disabled", "true");
+};
+
+const commentPost = (btn) => {
+  let main_post_el = btn.closest(".single-post");
+  let post_id = main_post_el.getAttribute("data-post_id");
+
+  main_post_el.querySelector(".post-comments").style.display = "block";
+};
